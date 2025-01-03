@@ -3,7 +3,7 @@ version: '3.8'
 services:
   myapp:
     image: backend 
-    command: ["./bin/runProject.sh"]
+    command: ["/app/bin/runProject.sh"]
     environment:
       - NODE_ENV=production
     ports:
