@@ -1,18 +1,28 @@
-// Import necessary modules
+console.log(process.Node)
 const express = require('express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const logger = require('../app/utils/logger');
+const config = require('../app/config/config');
+const morgan = require('morgan');
 
-// Create an instance of an Express app
 const app = express();
 
-// Define a port to listen on
-const PORT = 3000;
+const PORT = config.port;
 
-// Swagger definition (JSDoc-based)
+app.use(morgan('combined', {
+  stream: {
+    write: (message) => {
+      logger.info(message.trim());  
+    }
+  }
+}));
+
+logger.info(console.log(config))
+
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.1', // OpenAPI version
+    openapi: '3.0.1', 
     info: {
       title: 'User API',
       version: '1.0.0',
@@ -24,19 +34,15 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/routes/*.js'], // Path to your route files (for JSDoc annotations)
+  apis: ['./src/routes/*.js'], 
 };
 
-// Generate Swagger specification
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-// Set up Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Sample endpoint to retrieve user info
 app.get('/users/:id', (req, res) => {
   const { id } = req.params;
-  // Simulated response
   const user = {
     id,
     firstName: 'John',
