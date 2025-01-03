@@ -1,4 +1,4 @@
-console.log(process.Node)
+console.log(process.Node);
 const express = require('express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -10,19 +10,21 @@ const app = express();
 
 const PORT = config.port;
 
-app.use(morgan('combined', {
-  stream: {
-    write: (message) => {
-      logger.info(message.trim());  
-    }
-  }
-}));
+app.use(
+                  morgan('combined', {
+    stream: {
+      write: (message) => {
+        logger.info(message.trim());
+      },
+    },
+  }),
+);
 
-logger.info(console.log(config))
+logger.info(console.log(config));
 
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.1', 
+    openapi: '3.0.1',
     info: {
       title: 'User API',
       version: '1.0.0',
@@ -34,7 +36,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/routes/*.js'], 
+  apis: ['./src/routes/*.js'],
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
