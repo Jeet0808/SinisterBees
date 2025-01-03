@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  myapp:
+    image: backend 
+    command: ["./bin/runProject.sh"]
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "5173:5173"
+      - "5000:5000"
+    volumes:
+      - .:/app
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
