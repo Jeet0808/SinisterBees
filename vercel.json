@@ -1,17 +1,23 @@
 {
-    "builds": [
-      {
-        "src": "app/controllers/web/SinisterBeesFrontend/package.json",  
-        "use": "@vercel/static-build",   
-        "config": {
-          "distDir": "build"            
-        }
+  "builds": [
+    {
+      "src": "app/controllers/web/SinisterBeesFrontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app/controllers/web/SinisterBeesFrontend/build/$1"      
-      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/controllers/web/SinisterBeesFrontend/build/$1"
+    }
+  ],
+  "git": {
+    "ignored": [
+      "**/*",
+      "!app/controllers/web/SinisterBeesFrontend/**"
     ]
   }
+}
