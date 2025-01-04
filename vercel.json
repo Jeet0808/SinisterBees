@@ -13,5 +13,11 @@
       "src": "/(.*)",
       "dest": "app/controllers/web/SinisterBeesFrontend/build/$1"
     }
-  ]
+  ],
+  "git": {
+    "ignored": [
+      "**/*",
+      "!app/controllers/web/SinisterBeesFrontend/**"
+    ]
+  }
 }
