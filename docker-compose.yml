@@ -17,7 +17,7 @@ services:
 
   myapp:
     image: backend
-    command: ['/app/bin/runProject.sh']
+    # command: ['/app/bin/runProject.sh']
     environment:
       - NODE_ENV=production
     ports:

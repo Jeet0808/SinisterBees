@@ -1,7 +1,10 @@
-const winston = require('winston');
-const path = require('path');
-const config = require('../config/config');
+import winston from 'winston';
+import path from 'path';
+import config from '../config/config.js';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const logDirectory = path.join(__dirname, '..', '..', 'logs');
 const logFile = path.join(logDirectory, 'app.log');
 const errorLogFile = path.join(logDirectory, 'error.log');
@@ -41,4 +44,4 @@ const logger = winston.createLogger({
 //   logger.error('Unhandled Promise Rejection', { reason });
 // });
 
-module.exports = logger;
+export default logger;

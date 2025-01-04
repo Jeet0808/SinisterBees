@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   appName: 'SinisterBEES (Dev)',
   logLevel: 'debug',
   db: {

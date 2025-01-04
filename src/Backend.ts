@@ -1,10 +1,9 @@
-console.log(process.Node);
-const express = require('express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
-const logger = require('../app/utils/logger');
-const config = require('../app/config/config');
-const morgan = require('morgan');
+import express, { Response } from 'express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import morgan from 'morgan';
+import logger from '../app/utils/logger';
+import config from '../app/config/config';
 
 const app = express();
 
@@ -43,7 +42,7 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.get('/users/:id', (req, res) => {
+app.get('/users/:id', (req:Request, res:Response) => {
   const { id } = req.params;
   const user = {
     id,

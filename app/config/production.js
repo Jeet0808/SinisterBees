@@ -1,4 +1,4 @@
-module.exports = {
+export default  {
   appName: 'SinisterBEES (production)',
   logLevel: 'debug',
   port: 5000,
