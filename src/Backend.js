@@ -11,7 +11,7 @@ const app = express();
 const PORT = config.port;
 
 app.use(
-                  morgan('combined', {
+  morgan('combined', {
     stream: {
       write: (message) => {
         logger.info(message.trim());

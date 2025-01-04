@@ -2,6 +2,9 @@ module.exports = {
   appName: 'SinisterBEES (production)',
   logLevel: 'debug',
   port: 5000,
+  logging : true,
+  httplogging : true,
+  
   frontend: {
     port: 5174,
   },
