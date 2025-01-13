@@ -1,34 +1,58 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
 import './App.css';
+import { Suspense } from 'react';
+import withSuspense from './utils/SuspenderFunctions';
+
+const Dashboard = () => {
+  const data = useLoaderData();
+  const navigation = useNavigation  ();
+  console.log("Dashboard rendered with data:", data); // Log data
+    
+  // Check if the route is in a loading state
+  const isLoading = navigation.state === 'loading';
+
+  return (
+    <div>
+      {isLoading ? (
+        <p>Loading dashboard...</p>
+      ) : (
+        <div>dashboard - {data?.data}</div>
+      )}
+    </div>
+  );
+};
+
+const dashboardLoader = async () => {
+  console.log("dashboardLoader called");
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("dashboardLoader resolved");
+      resolve({ data: "Dashboard Data" });
+    }, 5000)
+  );
+};
 
 function App() {
-  const [count, setCount] = useState(0);
+  const router = createBrowserRouter([
+    {
+      path: '/dashboard',
+      element: (
+          <Dashboard />
+      ),
+      loader: dashboardLoader,
+    },
+  ]);
 
   return (
     <>
-      <div>
-        adasds
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>SinisterBees</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <RouterProvider router={router} />
     </>
   );
 }
