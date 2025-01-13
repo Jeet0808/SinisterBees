@@ -7,12 +7,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowJs": false,
-    "noEmit": true,   // No need to emit .js files when using ts-node
+    "noEmit": true // No need to emit .js files when using ts-node
   },
   "include": [
-    "src/**/*"  // Path to your source files
+    "src/**/*" // Path to your source files
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

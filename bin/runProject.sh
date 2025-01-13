@@ -99,6 +99,18 @@ start_frontend() {
   return 0
 }
 
+build_frontend(){
+  log_info "Starting frontend build"
+  echo $PWD
+  # cd ./app/controllers/web/SinisterBeesFrontend/ || {
+  #     log_error "Failed to change directory to frontend path!"
+  #     return 1
+  # }
+  # npm run build -- --clearScreen=false &
+
+}
+
+
 cleanup() {
   if ! "$gotsigchld"; then
     gotsigchld=true
@@ -142,6 +154,9 @@ check_frontend_dependencies || {
 start_backend || {
   log_error "Backend failed to start. Exiting."
   exit 1
+}
+build_frontend ||{
+  log_info "forntend build failed"
 }
 
 start_frontend || {

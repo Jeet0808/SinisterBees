@@ -1,7 +1,6 @@
 {
-    "watch": ["./"],
-    "ext": "ts",
-    "ignore": ["/**/*.test.ts"],
-    "exec": "npx tsx ./src/Backend.ts"
-  }
-  
+  "watch": ["./"],
+  "ext": "ts",
+  "ignore": ["/**/*.test.ts"],
+  "exec": "npx tsx ./src/Backend.ts"
+}

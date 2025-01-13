@@ -6,8 +6,8 @@ This document outlines how to set up your development environment to work with T
 
 Before you begin, ensure you have the following:
 
-*   **A Code Editor:** (e.g., VS Code, Sublime Text, Atom)
-*   **Git:** [Download Git](https://git-scm.com/downloads) - For version control.
+- **A Code Editor:** (e.g., VS Code, Sublime Text, Atom)
+- **Git:** [Download Git](https://git-scm.com/downloads) - For version control.
 
 ## Required Tools
 
@@ -17,9 +17,9 @@ Docker is used to run LocalStack, a local cloud environment.
 
 #### Installation
 
--   **Mac:** [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)
--   **Windows:** [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)
--   **Linux:** Follow the instructions for your specific distribution on the [Docker website](https://docs.docker.com/engine/install/)
+- **Mac:** [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)
+- **Windows:** [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)
+- **Linux:** Follow the instructions for your specific distribution on the [Docker website](https://docs.docker.com/engine/install/)
 
 #### Verification
 
@@ -30,20 +30,18 @@ docker --version
 docker compose version
 ```
 
-
-
 ### 2. Terraform
 
 Terraform is used to define and deploy infrastructure as code.
 
 #### Installation
 
--   **Mac:** [Homebrew](https://brew.sh/) can be used to install it
-    ```bash
-    brew install terraform
-    ```
--   **Windows:** Download the appropriate binary from the [Terraform downloads](https://www.terraform.io/downloads) page. Add the directory containing the binary to your PATH environment variable.
--   **Linux:** Similar to Windows, download the binary from the [Terraform downloads](https://www.terraform.io/downloads) page and add it to your PATH.
+- **Mac:** [Homebrew](https://brew.sh/) can be used to install it
+  ```bash
+  brew install terraform
+  ```
+- **Windows:** Download the appropriate binary from the [Terraform downloads](https://www.terraform.io/downloads) page. Add the directory containing the binary to your PATH environment variable.
+- **Linux:** Similar to Windows, download the binary from the [Terraform downloads](https://www.terraform.io/downloads) page and add it to your PATH.
 
 #### Verification
 
@@ -75,20 +73,20 @@ After setting up your environment you will be able to use the Localstack by chec
 Create a `docker-compose.yaml` file in the root directory of your project:
 
 ```yaml
-version: "3.9"
+version: '3.9'
 services:
   localstack:
     image: localstack/localstack:latest
     ports:
-      - "4566:4566" # main port
-      - "4510-4599:4510-4599" # range of ports for Lambda etc.
+      - '4566:4566' # main port
+      - '4510-4599:4510-4599' # range of ports for Lambda etc.
     environment:
       - DEBUG=1
       - SERVICES=s3,lambda,iam
       - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY}
     volumes:
-      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - '${TMPDIR:-/tmp}/localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
 ```
 
 This file configures LocalStack with necessary settings:
@@ -98,7 +96,7 @@ This file configures LocalStack with necessary settings:
 - `environment`: configure LocalStack with different settings
 - `volumes`: mount local folder to docker
 
-*Note: If you have LOCALSTACK_API_KEY, you can add it to the environment variable to use some of the advanced features like Cloud pod.*
+_Note: If you have LOCALSTACK_API_KEY, you can add it to the environment variable to use some of the advanced features like Cloud pod._
 
 ### 2. Running LocalStack
 
@@ -109,6 +107,7 @@ docker-compose up -d
 ```
 
 This command starts LocalStack in detached mode. Wait for a few moments for the container to initialize. To follow the log, you can run:
+
 ```bash
 docker-compose logs -f localstack
 ```
@@ -144,6 +143,7 @@ provider "aws" {
   }
 }
 ```
+
 This code sets up the AWS provider to interact with localstack by skipping all validation and changing the endpoint.
 
 ### 4. Initializing Terraform
@@ -173,17 +173,16 @@ resource "aws_s3_bucket" "example" {
 ```
 
 Now you can run the following code to create the s3 bucket.
+
 ```bash
 terraform apply
 ```
-*Note: Remember to destroy the s3 bucket at the end of the project with `terraform destroy` command.*
+
+_Note: Remember to destroy the s3 bucket at the end of the project with `terraform destroy` command._
 
 ## Troubleshooting
 
--   **LocalStack doesn't start:** Check the Docker logs for errors. Ensure there are no port conflicts.
--   **Terraform errors:** Double-check your Terraform configurations, including the provider settings.
--   **API calls fail:** Verify that LocalStack is running and that your endpoint configurations are correct.
--   **Docker not accessible** : Ensure docker is running and user have the appropriate permission to run the command.
-
-
-
+- **LocalStack doesn't start:** Check the Docker logs for errors. Ensure there are no port conflicts.
+- **Terraform errors:** Double-check your Terraform configurations, including the provider settings.
+- **API calls fail:** Verify that LocalStack is running and that your endpoint configurations are correct.
+- **Docker not accessible** : Ensure docker is running and user have the appropriate permission to run the command.

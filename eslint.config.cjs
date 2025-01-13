@@ -1,15 +1,5 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-
-
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  {files: ["**/*.{js,mjs,cjs,ts}"]},
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  {ignores: [
+module.exports = {
+  ignores: [
     '**/dist/**',
     '**/build/**',
     '**/out/**',
@@ -36,7 +26,7 @@ export default [
 
     '**/*.env',
     '**/*.env.*',
-    "eslint.config.cjs",
+
     '**/coverage/**', // Coverage reports
     '**/__tests__/**',
     '**/__mocks__/**',
@@ -54,5 +44,5 @@ export default [
     '**/.idea/**', // IntelliJ IDE files
     '**/.vscode/**', // VSCode workspace settings
     '**/.husky/**', // Husky hooks
-  ]},
-];
+  ],
+};

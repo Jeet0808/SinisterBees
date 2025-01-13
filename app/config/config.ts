@@ -16,6 +16,6 @@ const baseConfig = {
 };
 
 const environmentConfig = await import(path.join(__dirname, environment));
-const config:ConfigType = { ...baseConfig, ...environmentConfig.default };
+const config: ConfigType = { ...baseConfig, ...environmentConfig.default };
 
 export default config;

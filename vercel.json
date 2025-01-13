@@ -15,9 +15,6 @@
     }
   ],
   "git": {
-    "ignored": [
-      "**/*",
-      "!app/controllers/web/SinisterBeesFrontend/**"
-    ]
+    "ignored": ["**/*", "!app/controllers/web/SinisterBeesFrontend/**"]
   }
 }

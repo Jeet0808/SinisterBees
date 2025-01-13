@@ -1,4 +1,4 @@
-import express, { Response,Request } from 'express';
+import express, { Response, Request } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import morgan from 'morgan';
@@ -8,7 +8,7 @@ import config from '../app/config/config';
 const app = express();
 
 const PORT = config.port;
-
+const map = new Map();
 app.use(
   morgan('combined', {
     stream: {
@@ -42,7 +42,7 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.get('/users/:id', (req:Request, res:Response) => {
+app.get('/users/:id', (req: Request, res: Response) => {
   const { id } = req.params;
   const user = {
     id,
