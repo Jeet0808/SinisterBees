@@ -1,11 +1,18 @@
 import Button from '../ui/Button/button';
+import { useNotifications } from '../ui/Notifications/notification-store';
 
 export const DashboardLayput = () => {
   return (
     <div>
       <div>Navbar</div>
       <div>
-        <Button onClick={() => {}}>nmae</Button>
+        <Button onClick={() => {useNotifications.getState().addNotification({
+      type: 'error',
+      title: 'Error',
+      message:"message"}
+        )
+        }
+    }>nmae</Button>
       </div>
       <div>Footer</div>
     </div>
