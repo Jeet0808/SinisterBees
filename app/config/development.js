@@ -2,10 +2,10 @@ export default {
   appName: 'SinisterBEES (Dev)',
   logLevel: 'debug',
   db: {
-    host: 'localhost',
+    user: 'postgres',
+    host: 'db',
+    database: 'testdb',
+    password: 'password',
     port: 5432,
-    user: 'dev_user',
-    password: 'dev_password',
-    name: 'dev_database',
   },
 };

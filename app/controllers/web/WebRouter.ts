@@ -16,7 +16,7 @@ WebRouter.use('/web', (req, res, next) => {
 });
 
 WebRouter.get('/web/*', (req, res) => {
-  console.log(path.join(viteDistPath, 'index.html'))
+  console.log(path.join(viteDistPath, 'index.html'));
   res.sendFile(path.join(viteDistPath, 'index.html'));
 });
 

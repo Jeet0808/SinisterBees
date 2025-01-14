@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { paths } from '../config/path'; 
+import { paths } from '../config/path';
 import Button from '../components/ui/Button/button';
 
 const NotFound = () => {

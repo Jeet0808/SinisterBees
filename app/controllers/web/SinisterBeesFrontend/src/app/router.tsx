@@ -7,20 +7,23 @@ function AppRouter() {
 
   // }
 
-  const Router = createBrowserRouter([
-    {
-      path: paths.home.path,
-      element: <paths.home.component />,
-    },
-    {
-      path: paths.app.dashboard.path,
-      element: <paths.app.dashboard.component />,
-    },
-    {
-      path: '*',
-      element: <NotFound />,
-    },
-  ],{basename:"/web"});
+  const Router = createBrowserRouter(
+    [
+      {
+        path: paths.home.path,
+        element: <paths.home.component />,
+      },
+      {
+        path: paths.app.dashboard.path,
+        element: <paths.app.dashboard.component />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+    ],
+    { basename: '/web' },
+  );
 
   return <RouterProvider router={Router} />;
 }
