@@ -3,7 +3,7 @@ import { useNotifications } from '../ui/Notifications/notification-store';
 
 export const DashboardLayput = () => {
   return (
-    <div>
+    <div className='relative'>
       <div>Navbar</div>
       <div>
         <Button onClick={() => {useNotifications.getState().addNotification({
