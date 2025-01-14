@@ -4,7 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import morgan from 'morgan';
 import logger from '../app/utils/logger';
 import config from '../app/config/config';
-
+import WebRouter from "../app/controllers/web/WebRouter"
 const app = express();
 
 const PORT = config.port;
@@ -40,7 +40,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
+app.use("/web",WebRouter)
 app.get('/users/:id', (req: Request, res: Response) => {
   const { id } = req.params;
   const user = {
