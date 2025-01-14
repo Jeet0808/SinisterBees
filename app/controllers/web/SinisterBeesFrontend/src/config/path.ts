@@ -26,8 +26,9 @@ export const paths = {
       getHref: () => '/app',
     },
     dashboard: {
-      path: '',
-      getHref: () => '/app',
+      path: '/dashboard',
+      getHref: () => '/app/dashboard',
+      component: lazy(() => import('../app/dashboard/dashboard')),
     },
     discussions: {
       path: 'discussions',

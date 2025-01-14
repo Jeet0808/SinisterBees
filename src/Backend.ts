@@ -8,7 +8,6 @@ import config from '../app/config/config';
 const app = express();
 
 const PORT = config.port;
-const map = new Map();
 app.use(
   morgan('combined', {
     stream: {

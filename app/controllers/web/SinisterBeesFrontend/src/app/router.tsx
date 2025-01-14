@@ -11,7 +11,10 @@ function AppRouter() {
       path: paths.home.path,
       element: <paths.home.component />,
     },
-    {},
+    {
+      path: paths.app.dashboard.path,
+      element: <paths.app.dashboard.component />,
+    },
   ]);
 
   return <RouterProvider router={Router} />;

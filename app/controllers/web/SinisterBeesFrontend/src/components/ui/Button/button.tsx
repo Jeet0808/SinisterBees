@@ -1,5 +1,6 @@
 import { cn } from '../../../utils/cn';
 import { useTheme } from '../../../context/ThemeContext';
+import React from 'react';
 
 const buttonThemes = {
   light: {
@@ -29,37 +30,43 @@ interface ButtonPropsType {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FC<ButtonPropsType> = ({
-  children,
-  variant = 'primary',
-  size = 'md',
-  disabled = false,
-  className = '',
-  onClick,
-  ...props
-}) => {
-  const { theme } = useTheme();
+const Button = React.forwardRef<HTMLButtonElement, ButtonPropsType>(
+  (
+    {
+      children,
+      variant = 'primary',
+      size = 'md',
+      disabled = false,
+      className = '',
+      onClick,
+      ...props
+    },
+    ref,
+  ) => {
+    const { theme } = useTheme();
 
-  const isDisabled = disabled ? 'opacity-50 cursor-not-allowed' : '';
-  const themeClasses =
-    buttonThemes[theme]?.[variant] || buttonThemes.light.primary;
+    const isDisabled = disabled ? 'opacity-50 cursor-not-allowed' : '';
+    const themeClasses =
+      buttonThemes[theme]?.[variant] || buttonThemes.light.primary;
 
-  return (
-    <button
-      className={cn(
-        'inline-flex items-center justify-center rounded-md font-medium transition-all',
-        sizes[size],
-        themeClasses,
-        isDisabled,
-        className,
-      )}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+    return (
+      <button
+        className={cn(
+          'inline-flex items-center justify-center rounded-md font-medium transition-all',
+          sizes[size],
+          themeClasses,
+          isDisabled,
+          className,
+        )}
+        ref={ref}
+        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 export default Button;
