@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Provider>
-        <AppRouter/>
+        <AppRouter />
       </Provider>
     </>
   );

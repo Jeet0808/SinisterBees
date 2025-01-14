@@ -21,16 +21,15 @@ const sizes = {
 };
 
 interface ButtonPropsType {
-  children:React.ReactNode,
-  variant ?: "primary" | "secondary" | "danger",
-  size? : "sm" | "md" | "lg",
-  disabled?: boolean,
-  className? :string 
-  onClick : React.MouseEventHandler<HTMLButtonElement>
-
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  className?: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button:React.FC<ButtonPropsType> = ({
+const Button: React.FC<ButtonPropsType> = ({
   children,
   variant = 'primary',
   size = 'md',
@@ -42,7 +41,8 @@ const Button:React.FC<ButtonPropsType> = ({
   const { theme } = useTheme();
 
   const isDisabled = disabled ? 'opacity-50 cursor-not-allowed' : '';
-  const themeClasses = buttonThemes[theme]?.[variant] || buttonThemes.light.primary;
+  const themeClasses =
+    buttonThemes[theme]?.[variant] || buttonThemes.light.primary;
 
   return (
     <button
@@ -51,7 +51,7 @@ const Button:React.FC<ButtonPropsType> = ({
         sizes[size],
         themeClasses,
         isDisabled,
-        className
+        className,
       )}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}

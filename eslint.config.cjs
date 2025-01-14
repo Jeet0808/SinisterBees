@@ -12,7 +12,7 @@ module.exports = {
     '**/*.log',
     '**/tmp/**',
     '**/.cache/**',
-    "prettier.config.cjs",
+    'prettier.config.cjs',
     '*.config.js',
     'prettier.config.js',
     'webpack.config.js',

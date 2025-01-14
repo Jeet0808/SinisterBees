@@ -2,7 +2,7 @@
 //     return async (...args) => {
 //       let status = "s";
 //       let response;
-  
+
 //       const suspender = fn(...args).then(
 //         (res) => {
 //           status = "success";
@@ -13,7 +13,7 @@
 //           response = err;
 //         }
 //       );
-  
+
 //       return () => {
 //         if (status === "pending") {
 //           return suspender;
@@ -25,4 +25,3 @@
 //       };
 //     };
 //   }
-  
