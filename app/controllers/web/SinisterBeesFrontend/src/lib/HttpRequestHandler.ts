@@ -8,7 +8,7 @@ export const HttpHandler = axios.create({
   },
 });
 
-const Cache = new Map();
+// const Cache = new Map();
 
 HttpHandler.interceptors.request.use(
   (con) => {
