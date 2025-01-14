@@ -9,6 +9,10 @@ import { app } from '../src/Backend';
 import pool from './db/index';
 import ApiRouter from "./controllers/api"
 import cors from "cors"
+import path from 'path';
+import express from 'express';
+import { fileURLToPath } from 'url';
+
 const SetupMorgan = () => {
   app.use(
     morgan('combined', {
@@ -22,6 +26,12 @@ const SetupMorgan = () => {
 };
 
 const SetUpRoutes = () => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const viteDistPath = path.join("app","controllers","web" ,'SinisterBeesFrontend', 'dist');
+  console.log(viteDistPath)
+  app.use("/web",express.static(viteDistPath));
+
   app.use('/web', WebRouter);
   app.use("/api",ApiRouter)
   app.get('/users/:id', async (req: Request, res: Response) => {
