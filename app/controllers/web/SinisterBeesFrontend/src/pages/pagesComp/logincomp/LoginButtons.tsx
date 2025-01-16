@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../../components/ui/Button/button'; 
-import googleLogo from "../../assets/google.png";
+import googleLogo from "../../../assets/google.png";
+
 
 
 const LoginButtons = () => {
