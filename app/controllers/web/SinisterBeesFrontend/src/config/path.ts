@@ -6,17 +6,34 @@ export const paths = {
     getHref: () => '/',
     component: lazy(() => import('../pages/landingPage')),
   },
-
+  // auth pages paths
   auth: {
     register: {
       path: '/auth/register',
       getHref: (redirectTo?: string | null | undefined) =>
         `/auth/register${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ''}`,
+      component: lazy(() => import('../pages/Register')),
     },
     login: {
       path: '/auth/login',
       getHref: (redirectTo?: string | null | undefined) =>
         `/auth/login${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ''}`,
+      component: lazy(() => import('../pages/Login')),
+    },
+    logout: {
+      path: '/auth/logout',
+      getHref: () => '/auth/logout',
+      component: lazy(() => import('../pages/Logout')),
+    },
+    resetPassword: {
+      path: '/auth/reset-password',
+      getHref: () => '/auth/reset-password',
+      component: lazy(() => import('../pages/ResetPassword')),
+    },
+    forgetPassword: {
+      path: '/auth/forget-password',
+      getHref: () => '/auth/forget-password',
+      component: lazy(() => import('../pages/ForgetPassword')),
     },
   },
 
