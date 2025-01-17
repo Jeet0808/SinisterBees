@@ -1,5 +1,5 @@
 import React from 'react';
-import encripted from "../../assets/encrypted.png";
+import encripted from "../../../assets/encrypted.png";
 
 const ForgetPasswordHeading = () => {
   return (
